@@ -1,0 +1,41 @@
+#include <iostream>
+#include <iomanip>
+#include <cmath>
+#include <string>
+#include <vector>
+#include <ios>
+#include <limits>
+#include <array>
+using namespace std;
+
+
+int main() {
+    int n;
+    char sora;
+    float arr[12][12], sum = 0;
+    cin >> n >> sora;
+    for(int i = 0; i<12; i++) {
+        for(int j = 0; j<12; j++) {
+            cin >> arr[i][j];
+        }
+    }
+    for(int i = 0; i<12; i++) {
+        sum += arr[i][n];
+    }
+    if(sora == 'S') {
+        cout << fixed << setprecision(1) << sum << endl;
+    } else if(sora == 'M') {
+        cout << fixed << setprecision(1) << sum/12 << endl;
+    }
+
+    return 0;
+}
+
+
+
+
+
+
+
+
+
