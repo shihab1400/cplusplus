@@ -1,0 +1,30 @@
+#include <vector>
+#include <iostream>
+using namespace std;
+
+
+int main() {
+    string name;
+    cin >> name;
+    vector<char> noDist;
+    for(int i = 0; i<name.size(); i++) {
+        noDist.push_back(name[i]);
+        for(int j = 0; j<noDist.size(); j++) {
+            for(int k = 0; k<noDist.size(); k++) {
+                if(j==k) {
+                    continue;
+                }
+                if(noDist[j]==noDist[k]) {
+                    noDist.pop_back();
+                }
+            }
+        }
+    }
+    if(noDist.size()%2==0) {
+        cout << "CHAT WITH HER!" << endl;
+    } else {
+        cout << "IGNORE HIM!" << endl;
+    }
+
+    return 0;
+}
