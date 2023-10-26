@@ -1,0 +1,34 @@
+#include <vector>
+#include <iostream>
+using namespace std;
+
+
+int main() {
+    string prob;
+    cin >> prob;
+    vector<char> sol;
+    for(int i = 0; i<prob.size(); i++) {
+        if(prob[i]=='1') {
+            sol.push_back(prob[i]);
+        }
+    }
+    for(int i = 0; i<prob.size(); i++) {
+        if(prob[i]=='2') {
+            sol.push_back(prob[i]);
+        }
+    }
+    for(int i = 0; i<prob.size(); i++) {
+        if(prob[i]=='3') {
+            sol.push_back(prob[i]);
+        }
+    }
+    for(int i = 0; i<sol.size(); i++) {
+        if(i==sol.size()-1) {
+            cout << sol[i] << endl;
+            break;
+        }
+        cout << sol[i] << "+";
+    }
+
+    return 0;
+}
