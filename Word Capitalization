@@ -1,0 +1,15 @@
+#include <vector>
+#include <iostream>
+using namespace std;
+
+
+int main() {
+    string Cap;
+    cin >> Cap;
+    if(Cap[0]>='a') {
+        Cap[0] -= 32;
+    }
+    cout << Cap << endl;
+
+    return 0;
+}
