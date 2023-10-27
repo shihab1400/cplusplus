@@ -1,0 +1,23 @@
+#include <vector>
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+
+int main() {
+    int firstBananaCost, moneyHeHas, wantToBuy;
+    cin >> firstBananaCost >> moneyHeHas >> wantToBuy;
+    int totalCost = 0;
+    for(int i = 1; i<=wantToBuy; i++) {
+        totalCost += i*firstBananaCost;
+    }
+    if(totalCost>moneyHeHas) {
+        cout << totalCost-moneyHeHas << endl;
+    } else {
+        cout << 0 << endl;
+    }
+    
+    
+
+    return 0;
+}
