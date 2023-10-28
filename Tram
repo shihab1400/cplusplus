@@ -1,0 +1,29 @@
+#include <vector>
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+
+int main() {
+    int stops;
+    cin >> stops;
+    vector<int> cap;
+    cap.push_back(0);
+    int lrg = cap[0];
+    for(int i = 1; i<=stops; i++) {
+        int x, y;
+        cin >> x >> y;
+        cap.push_back(cap[0]-x+y+cap[i-1]);
+    }
+    for(int i = 0; i<stops; i++) {
+        if(lrg<cap[i]) {
+            lrg = cap[i];
+        }
+    }
+    cout << lrg << endl;
+
+
+
+
+    return 0;
+}
