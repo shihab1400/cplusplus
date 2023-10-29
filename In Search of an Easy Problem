@@ -1,0 +1,22 @@
+#include <iostream>
+#include <string>
+#include <vector>
+using namespace std;
+
+int main() {
+    int n;
+    cin >> n;
+    bool p;
+    string s = "EASY";
+    for(int i = 0; i<n; i++) {
+        cin >> p;
+        if(p==1) {
+            s = "HARD";
+        }
+    }
+    cout << s << endl;
+
+
+
+    return 0;
+}
