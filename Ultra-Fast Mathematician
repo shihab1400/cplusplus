@@ -1,0 +1,24 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+int main() {
+    string one, two;
+    cin >> one >> two;
+    vector<int> exOr;
+    for(int i = 0; i<one.size(); i++) {
+        if(one[i]!=two[i]) {
+            exOr.push_back(1);
+        } else {
+            exOr.push_back(0);
+        }
+    }
+
+    for(int i = 0; i<exOr.size(); i++) {
+        cout << exOr[i];
+    }
+    cout << endl;
+
+
+    return 0;
+}
+
