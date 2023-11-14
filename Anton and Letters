@@ -1,0 +1,23 @@
+#include <iostream>
+#include <vector>
+#include <set>
+#include <algorithm>
+#include <utility>
+#include <iterator>
+using namespace std;
+int main() {
+    string s;
+    set<char> arr;
+    getline(cin, s);
+    for(int i = 0; i<s.size(); i++) {
+        if(s[i]=='{' || s[i]==',' || s[i]==' ' || s[i]=='}') {
+            continue;
+        }
+        arr.insert(s[i]);
+    }
+    cout << arr.size() << endl;
+
+
+    return 0;
+}
+
