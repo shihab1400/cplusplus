@@ -1,0 +1,39 @@
+#include <iostream>
+#include <vector>
+#include <set>
+#include <algorithm>
+#include <utility>
+using namespace std;
+int main() {
+    int n, p, lg, sm, lgi, smi, mid;
+    bool cross = 0;
+    cin >> n;
+    vector<int> arr;
+    cin >> p;
+    arr.push_back(p);
+    lg = arr[0];
+    lgi = 0;
+    sm = arr[0];
+    smi = 0;
+    for(int i = 1; i<n; i++) {
+        cin >> p;
+        arr.push_back(p);
+        if(arr[i]>lg) {
+            lg = arr[i];
+            lgi = i;
+        }
+        if(arr[i]<=sm) {
+            sm = arr[i];
+            smi = i;
+        }
+    }
+    if(lgi>smi) {
+        smi++;
+    }
+    cout << lgi+(n-1-smi) << endl;
+
+
+
+    return 0;
+}
+
