@@ -1,0 +1,38 @@
+#include <iostream>
+#include <set>
+#include <iterator>
+using namespace std;
+int main() {
+    int row, column;
+    bool b = 1;
+    cin >> row >> column;
+    for(int i = 1; i<=row; i++) {
+        for(int j = 1; j<=column; j++) {
+            if(i%2!=0) {
+                cout << "#";
+            } else {
+                if(b==1) {
+                    if(j==column) {
+                        cout << "#";
+                        b = 0;
+                    } else {
+                        cout << ".";
+                    }
+                } else {
+                    if(j==1) {
+                        cout << "#";
+                    } else {
+                        cout << ".";
+                    }
+                    if(j==column) {
+                        b = 1;
+                    }
+                }
+            }
+        }
+        cout << endl;
+    }
+
+    return 0;
+}
+
