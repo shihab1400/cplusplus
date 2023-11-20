@@ -1,0 +1,28 @@
+#include <iostream>
+#include <set>
+#include <iterator>
+using namespace std;
+
+
+
+int main() {
+    int n, p, lg, sm, cnt = 0;
+    cin >> n;
+    cin >> p;
+    lg = p;
+    sm = p;
+    for(int i = 1; i<n; i++) {
+        cin >> p;
+        if(p>lg) {
+            cnt++;
+            lg = p;
+        }
+        if(p<sm) {
+            cnt++;
+            sm = p;
+        }
+    }
+    cout << cnt << endl;
+    return 0;
+}
+
