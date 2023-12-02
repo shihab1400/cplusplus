@@ -1,0 +1,20 @@
+#include <iostream>
+#include <iomanip>
+using namespace std;
+
+int main() {
+    int pr, ch, cnt = 0;
+    int prh = 0;
+    cin >> pr >> ch;
+    while(true) {
+        if(prh%10==0 && prh!=0 || prh%10==ch) {
+            break;
+        }
+        prh+=pr;
+        cnt++;
+    }
+    cout << cnt;
+
+    return 0;
+}
+
