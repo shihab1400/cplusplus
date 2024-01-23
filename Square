@@ -1,0 +1,21 @@
+#include <iostream>
+#include <vector>
+using namespace std;
+int main() {
+    int n;
+    cin >> n;
+    vector<int> s;
+    for(int i = 0; i<n; i++) {
+        int a, b, c, d, e, f, g, h;
+        cin >> a >> b >> c >> d >> e >> f >> g >> h;
+        if(a!=c) {
+            s.push_back(abs(a-c)*abs(a-c));
+        } else {
+            s.push_back(abs(b-d)*abs(b-d));
+        }
+    }
+    for(int i = 0; i<s.size(); i++) {
+        cout << s[i] << endl;
+    }
+    return 0;
+}
