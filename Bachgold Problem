@@ -1,0 +1,36 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <cmath>
+using namespace std;
+
+int main() {
+    int n, div2;
+    cin >> n;
+    div2 = n/2;
+    if(div2*2==n) {
+        cout << div2 << endl;
+        for(int i = 0; i<div2; i++) {
+            if(i==div2-1) {
+                cout << 2 << endl;
+            } else {
+                cout << 2 << " ";
+            }
+        }
+    } else {
+        cout << div2 << endl;
+        for(int i = 0; i<div2; i++) {
+            if(i==div2-1) {
+                cout << 3 << endl;
+            } else {
+                cout << 2 << " ";
+            }
+        }
+    }
+
+
+
+
+
+    return 0;
+}
