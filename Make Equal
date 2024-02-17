@@ -1,0 +1,34 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <cmath>
+using namespace std;
+
+int main() {
+    int t;
+    cin >> t;
+    while(t--) {
+        int n, sum = 0, eq, bank = 0;
+        cin >> n;
+        int arr[n];
+        for(int i = 0; i<n; i++) {
+            cin >> arr[i];
+            sum+=arr[i];
+        }
+        eq = sum/n;
+        for(int i = 0; i<n; i++) {
+            bank += arr[i]-eq;
+            if(bank<0) {
+                cout << "NO" << endl;
+                break;
+            }
+        }
+        if(bank==0) {
+            cout << "YES" << endl;
+        }
+    }
+
+
+
+    return 0;
+}
