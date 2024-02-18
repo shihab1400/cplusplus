@@ -1,0 +1,36 @@
+#include <iostream>
+#include <iomanip>
+#include <vector>
+#include <list>
+#include <iterator>
+using namespace std;
+
+
+int main() {
+    int t;
+    cin >> t;
+    while(t--) {
+        bool b = 1;
+        string n;
+        cin >> n;
+        if(n.size()%2!=0) {
+            cout << "NO" << endl;
+            continue;
+        }
+        for(int i = 0; i<n.size()/2; i++) {
+            if(n[i]!=n[i+n.size()/2]) {
+                b = 0;
+                break;
+            }
+        }
+        if(b==0) {
+            cout << "NO" << endl;
+        } else {
+            cout << "YES" << endl;
+        }
+    }
+
+
+    return 0;
+}
+
