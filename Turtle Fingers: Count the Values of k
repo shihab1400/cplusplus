@@ -1,0 +1,38 @@
+#include <iostream>
+#include <iomanip>
+#include <vector>
+#include <list>
+#include <algorithm>
+#include <cmath>
+#include <iterator>
+#include <math.h>
+using namespace std;
+
+
+
+int main() {
+    int t;
+    cin >> t;
+    while(t--) {
+        int a, b, l, c = 0;
+        cin >> a >> b >> l;
+        int x = 0, y = 0;
+        double k;
+        while(pow(a, x)<=l) {
+            while(pow(b, y)<=l) {
+                k = l/(pow(a, x)*pow(b, y));
+                if((int)k==k) {
+                    c++;
+                }
+                y++;
+            }
+            x++;
+            y = 0;
+        }
+        cout << c << endl;
+    }
+
+
+    return 0;
+}
+
