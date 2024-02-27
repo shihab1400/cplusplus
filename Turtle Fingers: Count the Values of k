@@ -4,6 +4,7 @@
 #include <list>
 #include <algorithm>
 #include <cmath>
+#include <set>
 #include <iterator>
 #include <math.h>
 using namespace std;
@@ -18,18 +19,19 @@ int main() {
         cin >> a >> b >> l;
         int x = 0, y = 0;
         double k;
+        set<int> arr;
         while(pow(a, x)<=l) {
             while(pow(b, y)<=l) {
                 k = l/(pow(a, x)*pow(b, y));
                 if((int)k==k) {
-                    c++;
+                    arr.insert(k);
                 }
                 y++;
             }
             x++;
             y = 0;
         }
-        cout << c << endl;
+        cout << arr.size() << endl;
     }
 
 
