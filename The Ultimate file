@@ -1,0 +1,744 @@
+#include <iostream>
+#include <vector>
+#include <cmath>
+#include <array>
+#include <time.h>//for random number.
+#include <iomanip>//for setw().
+#include <list>
+#include <iterator>
+using namespace std;
+
+void table() {
+    cout << "What number's table do you want?" << endl;
+    int n;
+    cin >> n;
+    cout << "How long do you want your table to be?" << endl;
+    int x;
+    cin >> x;
+
+    for(int i = 1; i<=x; i++) {
+        cout << n << " x " << i << " = " << n*i << endl;
+    }
+}
+
+void matrix() {
+    cout << "-------------------Matrix Calculator-------------------" << endl << endl;
+    cout << "1. Addition" << endl;
+    cout << "2. Subtraction" << endl;
+    cout << "3. Multiplication" << endl;
+    cout << "4. Transpose" << endl;
+    cout << endl << "Choose what you wanna do: ";
+    int t;
+    cin >> t;
+    int m, n, x, y;
+    if(t==1) {
+        cout << "You choose Addition." << endl;
+        cout << "Addition Rule: The two matrix must have the same rows and columns." << endl << endl;
+        cout << "Enter the row and column of first matrix: ";
+        cin >> m >> n;
+        cout << "Enter the row and column of second matrix: ";
+        cin >> x >> y;
+        while(m!=x && n!=y) {
+            cout << endl << "ERROR: You must follow the addition rule." << endl << endl;
+            cout << "Enter the row and column of first matrix: ";
+            cin >> m >> n;
+            cout << "Enter the row and column of second matrix: ";
+            cin >> x >> y;
+        }
+        int arr1[m][n], arr2[x][y], add[x][y];
+        cout << "Enter the elements of first matrix: " << endl;
+        for(int i = 0; i<m; i++) {
+            for(int j = 0; j<n; j++) {
+                cin >> arr1[i][j];
+            }
+        }
+        cout << "Enter the elements of second matrix: " << endl;
+        for(int i = 0; i<x; i++) {
+            for(int j = 0; j<y; j++) {
+                cin >> arr2[i][j];
+            }
+        }
+        for(int i = 0; i<m; i++) {
+            for(int j = 0; j<n; j++) {
+                add[i][j] = arr1[i][j] + arr2[i][j];
+            }
+        }
+        cout << endl << "Addition(First + Second): " << endl << endl;
+        for(int i = 0; i<m; i++) {
+            for(int j = 0; j<n; j++) {
+                cout << setw(4) << add[i][j];
+            }
+            cout << endl;
+        }
+    } else if(t==2) {
+        cout << "You choose Subtraction." << endl;
+        cout << "Subtraction Rule: The two matrix must have the same rows and columns." << endl << endl;
+        cout << "Enter the row and column of first matrix: ";
+        cin >> m >> n;
+        cout << "Enter the row and column of second matrix: ";
+        cin >> x >> y;
+        while(m!=x && n!=y) {
+            cout << endl << "ERROR: You must follow the Subtraction rule." << endl << endl;
+            cout << "Enter the row and column of first matrix: ";
+            cin >> m >> n;
+            cout << "Enter the row and column of second matrix: ";
+            cin >> x >> y;
+        }
+        int arr1[m][n], arr2[x][y], sub[x][y];
+        cout << "Enter the elements of first matrix: " << endl;
+        for(int i = 0; i<m; i++) {
+            for(int j = 0; j<n; j++) {
+                cin >> arr1[i][j];
+            }
+        }
+        cout << "Enter the elements of second matrix: " << endl;
+        for(int i = 0; i<x; i++) {
+            for(int j = 0; j<y; j++) {
+                cin >> arr2[i][j];
+            }
+        }
+        for(int i = 0; i<m; i++) {
+            for(int j = 0; j<n; j++) {
+                sub[i][j] = arr1[i][j] - arr2[i][j];
+            }
+        }
+        cout << endl << "Subtraction(First - Second): " << endl << endl;
+        for(int i = 0; i<m; i++) {
+            for(int j = 0; j<n; j++) {
+                cout << setw(4) << sub[i][j];
+            }
+            cout << endl;
+        }
+    } else if(t==3) {
+        cout << "You choose Multiplication." << endl;
+        cout << "Multiplication Rule: The column of first matrix must be equal to the row of second matrix." << endl << endl;
+        cout << "Enter the row and column of first matrix: ";
+        cin >> m >> n;
+        cout << "Enter the row and column of second matrix: ";
+        cin >> x >> y;
+        while(n!=x) {
+            cout << endl << "ERROR: You must follow the Multiplication rule." << endl << endl;
+            cout << "Enter the row and column of first matrix: ";
+            cin >> m >> n;
+            cout << "Enter the row and column of second matrix: ";
+            cin >> x >> y;
+        }
+        int arr1[m][n], arr2[x][y], mult[m][y];
+        cout << "Enter the elements of first matrix: " << endl;
+        for(int i = 0; i<m; i++) {
+            for(int j = 0; j<n; j++) {
+                cin >> arr1[i][j];
+            }
+        }
+        cout << "Enter the elements of second matrix: " << endl;
+        for(int i = 0; i<x; i++) {
+            for(int j = 0; j<y; j++) {
+                cin >> arr2[i][j];
+            }
+        }
+        for(int i = 0; i<m; i++) {
+            for(int j = 0; j<y; j++) {
+                int p = 0;
+                for(int k = 0; k<n; k++) {
+                    p += arr1[i][k]*arr2[k][j];
+                }
+                mult[i][j] = p;
+            }
+        }
+        cout << endl << "Multiplication(First x Second): " << endl << endl;
+        for(int i = 0; i<m; i++) {
+            for(int j = 0; j<y; j++) {
+                cout << setw(4) << mult[i][j];
+            }
+            cout << endl;
+        }
+    } else if(t==4) {
+        cout << "You choose Transpose." << endl << endl;
+        cout << "Enter the row and column of the matrix: ";
+        cin >> m >> n;
+        int arr[m][n], trans[n][m];
+        for(int i = 0; i<m; i++) {
+            for(int j = 0; j<n; j++) {
+                cin >> arr[i][j];
+                trans[j][i] = arr[i][j];
+            }
+        }
+        cout << endl << "Transpose of the matrix: " << endl << endl;
+        for(int i = 0; i<n; i++) {
+            for(int j = 0; j<m; j++) {
+                cout << setw(4) << trans[i][j];
+            }
+            cout << endl;
+        }
+    } else {
+        cout << "ERROR: Type only 1-3 numbers." << endl;
+        matrix();
+    }
+}
+
+void theGameOfLuck() {
+    cout << "***How to play***" << endl << endl;
+    cout << "Its a two player game. First of all, you need to enter how many rounds you wanna play. " << endl;
+    cout << "Then the game starts. Players will not show each other what value they put in their turn. " << endl << endl;
+    cout << "Scoring system: " << endl;
+    cout << "If both input 1, then both will get 3 points. " << endl;
+    cout << "If one of then input 1, then he will get 5 points. And the other one will get 0. " << endl;
+    cout << "If both of them input 0, then both will get 1 point." << endl;
+    cout << "Thats the rule! GOOD LUCK!" << endl << endl;
+    int round, p1 = 0, p2 = 0;
+    cout << "Enter how many rounds you wanna play: ";
+    cin >> round;
+    system("cls");
+    cout << "You will play " << round << " rounds!" << endl << endl;
+    for(int i = 1; i<=round; i++) {
+        bool b1, b2;
+        cout << "Round " << i << endl;
+        cout << "Player 1: ";
+        cin >> b1;
+        system("cls");
+        cout << "Round " << i << endl;
+        cout << "Player 2: ";
+        cin >> b2;
+        system("cls");
+        if(b1==1 && b2==1) {
+            p1+=3;
+            p2+=3;
+        } else if(b1==1 && b2==0) {
+            p1+=5;
+        } else if(b1==0 && b2==1) {
+            p2+=5;
+        } else if(b1==0 && b2==0) {
+            p1+=1;
+            p2+=1;
+        }
+    }
+    cout << "Player 1: " << p1 << endl;
+    cout << "Player 2: " << p2 << endl;
+    if(p1>p2) {
+        cout << "Player 1 won the game!" << endl;
+    } else if(p1<p2) {
+        cout << "Player 2 won the game!" << endl;
+    } else {
+        cout << "DRAW!" << endl;
+    }
+}
+
+void twoSum() {
+    cout << "Enter the size of the array:" << endl;
+    int n;
+    cin >> n;
+    int arr[n];
+    cout << "Enter " << n << " numbers:" << endl;
+    for(int i = 0; i<n; i++) {
+        cin >> arr[i];
+    }
+    cout << "Enter the target number:" << endl;
+    int trgt;
+    cin >> trgt;
+    int p = 0;
+    for(int i = 0; i<n; i++) {
+        for(int j = 0; j<n; j++) {
+            if(i==j) {
+                continue;
+            }
+            if(arr[i]+arr[j]==trgt) {
+                cout << "(" << i << ", " << j << ")" << endl;
+                p = 1;
+                break;
+            }
+        }
+        if(p==1) {
+            break;
+        }
+    }
+}
+
+void moneyCal() {
+    cout << "--------------------------Money Calculator--------------------------" << endl << endl;
+    long long int total, rem;
+    cout << "Enter the amount of money: ";
+    cin >> total;
+    int thousand, fiveHund, twoHund, hund, fifty, twenty, ten, five, two, one;
+    thousand = total/1000;
+    rem = total-thousand*1000;
+    fiveHund = rem/500;
+    rem -= fiveHund*500;
+    twoHund = rem/200;
+    rem -= twoHund*200;
+    hund = rem/100;
+    rem -= hund*100;
+    fifty = rem/50;
+    rem -= fifty*50;
+    twenty = rem/20;
+    rem -= twenty*20;
+    ten = rem/10;
+    rem -= ten*10;
+    five = rem/5;
+    rem -= five*5;
+    two = rem/2;
+    rem -= two*2;
+    one = rem/1;
+    cout << endl;
+    cout << "1000 taka notes = " << thousand << endl;
+    cout << "500 taka notes = " << fiveHund << endl;
+    cout << "200 taka notes = " << twoHund << endl;
+    cout << "100 taka notes = " << hund << endl;
+    cout << "50 taka notes = " << fifty << endl;
+    cout << "20 taka notes = " << twenty << endl;
+    cout << "10 taka notes = " << ten << endl;
+    cout << "5 taka notes = " << five << endl;
+    cout << "2 taka notes = " << two << endl;
+    cout << "1 taka notes = " << one << endl;
+}
+
+void palindrome() {
+    cout << "-------------Palindrome or Not-------------" << endl;
+    cout << "Enter a word or a number: ";
+    string word;
+    cin >> word;
+    list<char> ch;
+    list<char>::iterator it1;
+    list<char>::iterator it2;
+    bool b = 1;
+    for(int i = 0; i<word.size(); i++) {
+        ch.push_back(word[i]);
+    }
+    it1 = ch.begin();
+    it2 = ch.end();
+    it2--;
+    for(int i = 0; i<word.size()/2; i++) {
+        if(*it1!=*it2) {
+            b = 0;
+            break;
+        }
+        it1++;
+        it2--;
+    }
+    if(b==1) {
+        cout << "Its a Palindrome" << endl;
+    } else {
+        cout << "Its not a Palindrome" << endl;
+    }
+}
+
+void prime() {
+    cout << "-----------------------------Prime Number-----------------------------" << endl << endl;
+    cout << "1. Enter a specific number over and over again to check its prime or not" << endl;
+    cout << "2. Check some specific numbers are prime or not" << endl;
+    cout << "3. Prime within a range" << endl;
+    cout << "Choose an option: ";
+    int t;
+    cin >> t;
+    if(t==1) {
+        cout << endl << "Enter 0 to exit." << endl;
+        int n;
+        bool b;
+        while(true) {
+            cout << endl << "Enter a number: ";
+            cin >> n;
+            if(n==0) {
+                break;
+            } else if(n==1) {
+                cout << n << " is not a prime number" << endl;
+            } else {
+                b = 1;
+                for(int i = 2; i<n+1/2; i++) {
+                    if(n%i==0) {
+                        b = 0;
+                        break;
+                    }
+                }
+                if(b==1) {
+                    cout << n << " is a prime number" << endl;
+                } else {
+                    cout << n << " is not a prime number" << endl;
+                }
+            }
+        }
+    } else if(t==2) {
+        cout << endl << "How many numbers do you wanna check: ";
+        int n;
+        cin >> n;
+        int arr[n];
+        cout << "Enter the numbers: ";
+        for(int i = 0; i<n; i++) {
+            cin >> arr[i];
+        }
+        cout << endl << "Results: " << endl;
+        bool b;
+        for(int i = 0; i<n; i++) {
+            b = 1;
+            for(int j = 2; j<arr[i]/2; j++) {
+                if(arr[i]%j==0) {
+                    b = 0;
+                    break;
+                }
+            }
+            if(b==0) {
+                cout << endl << arr[i] << " is not a prime number" << endl;
+            } else {
+                cout << endl << arr[i] << " is a prime number" << endl;
+            }
+        }
+    } else if(t==3) {
+        cout << endl << "Enter the range: " << endl;
+        cout << "From: ";
+        int x, y, cnt = 0;
+        cin >> x;
+        cout << "To: ";
+        cin >> y;
+        bool b;
+        cout << endl << "Prime numbers between " << x << " to " << y << " is: " << endl;
+        for(int i = x; i<=y; i++) {
+            b = 1;
+            for(int j = 2; j<i/2; j++) {
+                if(i%j==0) {
+                    b = 0;
+                    break;
+                }
+            }
+            if(b==1 && i!=0 && i!=1) {
+                cout << i << " ";
+                cnt++;
+            }
+        }
+        cout << endl << "Total: " << cnt << endl;
+    } else {
+        cout << "ERROR: Type only 1, 2 or 3." << endl;
+        prime();
+    }
+}
+
+void repetitiveNumber() {
+    cout << "-----Find the repetitive number from an array-----" << endl;
+    int n;
+    cout << "Enter the size of the array: " << endl;
+    cin >> n;
+    int arr[n];
+    vector<int> d;
+    cout << "Please enter " << n << " numbers: " << endl;
+    for(int i = 0; i<n; i++) {
+        cin >> arr[i];
+    }
+    for(int i = 0; i<n; i++) {
+        for(int j = 0; j<n; j++) {
+            if(i==j) {
+                continue;
+            }
+            if(arr[i]==arr[j]) {
+                d.push_back(arr[j]);
+                for(int k = 0; k<d.size(); k++) {
+                    for(int l = 0; l<d.size(); l++) {
+                        if(k==l) {
+                            continue;
+                        }
+                        if(d[k]==d[l]) {
+                            d.pop_back();
+                        }
+                    }
+                }
+            }
+        }
+    }
+    cout << "Your repetitive numbers are: ";
+    for(int i = 0; i<d.size(); i++) {
+        cout << d[i] << " ";
+    }
+    cout << endl;
+}
+
+void nameGuessingGame() {
+    string nameArr[10] = {"shihab", "farhat", "anjam", "rana", "hridoy", "japan", "shohan", "atiqul", "sujon", "rain"};
+    string guess;
+    srand((unsigned) time(NULL));
+	int random = rand()%10;
+	string name = nameArr[random];
+	cout << "-----Name Guessing Game-----" << endl << endl;
+	cout << "Enter a name every time until you guess the correct name: " << endl;
+    while(true) {
+        vector<char> match;
+        cin >> guess;
+        for(int i = 0; i<guess.size(); i++) {
+            if(guess[i]<='Z') {
+                guess[i] += 32;
+            }
+        }
+        if(guess==name) {
+            cout << "Well done. You guessed the name." << endl;
+            break;
+        }
+        for(int i = 0; i<name.size(); i++) {
+            for(int j = 0; j<guess.size(); j++) {
+                if(name[i]==guess[j]) {
+                    match.push_back(guess[j]);
+                    for(int k = 0; k<match.size(); k++) {
+                        for(int l = 0; l<match.size(); l++) {
+                            if(k==l) {
+                                continue;
+                            }
+                            if(match[k]==match[l]) {
+                                match.pop_back();
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        for(int i = 0; i<match.size(); i++) {
+            cout << "'" << match[i] << "' ";
+        }
+        cout << "is present in the name." << endl;
+    }
+}
+
+void beautifulYear() {
+    cout << "-----Next Beautiful Year Finder-----" << endl << endl;
+    cout << "Enter a year: " << endl;
+    int year;
+    cin >> year;
+    while(true) {
+        year++;
+        int temp = year;
+        vector<int> sep;
+        while(temp!=0) {
+            sep.push_back(temp%10);
+            temp/=10;
+        }
+        int p = 0;
+        for(int i = 0; i<sep.size(); i++) {
+            for(int j = 0; j<sep.size(); j++) {
+                if(i==j) {
+                    continue;
+                }
+                if(sep[i]==sep[j]) {
+                    p = 1;
+                    break;
+                } else {
+                    p = 3;
+                }
+            }
+            if(p==1) {
+                break;
+            }
+        }
+        if(p==3) {
+            break;
+        }
+    }
+    cout << "Next Beautiful year is: " << year << endl;
+}
+
+void calculator() {
+    cout << "-----Calculator-----" << endl;
+    int n;
+    while(true) {
+        cout << "1. Addition" << endl;
+        cout << "2. Subtraction" << endl;
+        cout << "3. Multiplication" << endl;
+        cout << "4. Division" << endl;
+        cout << "5. Exit" << endl;
+        cin >> n;
+        if(n==1) {
+            cout << "-----Addition-----" << endl;
+            int p;
+            cout << "How many numbers you want to add?" << endl;
+            cin >> p;
+            float arr[p], sum = 0;
+            cout << "Enter " << p << " numbers: " << endl;
+            for(int i = 0; i<p; i++) {
+                cin >> arr[i];
+                sum += arr[i];
+            }
+            cout << "Addition: " << sum << endl << endl;
+        } else if(n==2) {
+            cout << "-----Subtraction-----" << endl;
+            float x, y;
+            cout << "Enter 2 numbers: " << endl;
+            cin >> x >> y;
+            cout << "Subtraction: " << x-y << endl << endl;
+        } else if(n==3) {
+            cout << "-----Multiplication-----" << endl;
+            int p;
+            cout << "How many numbers you want to multiply?" << endl;
+            cin >> p;
+            float arr[p], mult = 1;
+            cout << "Enter " << p << " numbers: " << endl;
+            for(int i = 0; i<p; i++) {
+                cin >> arr[i];
+                mult *= arr[i];
+            }
+            cout << "Multiplication: " << mult << endl << endl;
+        } else if(n==4) {
+            cout << "-----Division-----" << endl;
+            float x, y;
+            cout << "Enter 2 numbers: " << endl;
+            cin >> x >> y;
+            if(y==0) {
+                cout << "Error!" << endl << endl;
+                continue;
+            } else {
+                cout << "Division: " << x/y << endl << endl;
+            }
+        } else if(n==5) {
+            break;
+        } else {
+            continue;
+        }
+    }
+}
+
+void fibonacci() {
+    cout << "-----Fibonacci Series-----" << endl;
+    int t, x, y, z;
+    cout << "How long do you want your Fibonacci Series to be: ";
+    cin >> t;
+    x = 0;
+    y = 1;
+    cout << endl << "The Fibonacci Series you wanted: " << endl;
+    while(t--) {
+        if(t==0) {
+            cout << x << endl;
+        } else {
+            cout << x << ", ";
+        }
+        z = x + y;
+        x = y;
+        y = z;
+    }
+}
+
+int cntnw() {
+    cout << endl;
+    cout << "To continue Enter 1. And to End enter anything else: " << endl;
+    int h;
+    cin >> h;
+    return h;
+}
+
+void funcName() {
+    cout << "0. Clear Screen" << endl;
+    cout << "1. Multiplication Table" << endl;
+    cout << "2. Matrix Operation" << endl;
+    cout << "3. The game of LUCK" << endl;
+    cout << "4. Two Sum" << endl;
+    cout << "5. Money Calculator" << endl;
+    cout << "6. Palindrome or Not" << endl;
+    cout << "7. Prime number" << endl;
+    cout << "8. Repetitive Number Finder" << endl;
+    cout << "9. Name Guessing Game" << endl;
+    cout << "10. Next Beautiful Year" << endl;
+    cout << "11. Calculator" << endl;
+    cout << "12. Fibonacci Series" << endl;
+    cout << "Choose what do you wanna do: ";
+}
+
+bool againOrNot() {
+    if(cntnw()==1) {
+        cout << endl;
+        funcName();
+        return 1;
+    } else {
+        return 0;
+    }
+}
+
+int main() {
+    funcName();
+    int n;
+    while(true) {
+        cin >> n;
+        cout << endl;
+        if(n==0) {
+            system("cls");
+            funcName();
+        } else if(n==1) {
+            table();
+            if(againOrNot()==1) {
+                continue;
+            } else {
+                break;
+            }
+        } else if(n==2) {
+            matrix();
+            if(againOrNot()==1) {
+                continue;
+            } else {
+                break;
+            }
+        } else if(n==3) {
+            theGameOfLuck();
+            if(againOrNot()==1) {
+                continue;
+            } else {
+                break;
+            }
+        } else if(n==4) {
+            twoSum();
+            if(againOrNot()==1) {
+                continue;
+            } else {
+                break;
+            }
+        } else if(n==5) {
+            moneyCal();
+            if(againOrNot()==1) {
+                continue;
+            } else {
+                break;
+            }
+        } else if(n==6) {
+            palindrome();
+            if(againOrNot()==1) {
+                continue;
+            } else {
+                break;
+            }
+        } else if(n==7) {
+            prime();
+            if(againOrNot()==1) {
+                continue;
+            } else {
+                break;
+            }
+        } else if(n==8) {
+            repetitiveNumber();
+            if(againOrNot()==1) {
+                continue;
+            } else {
+                break;
+            }
+        } else if(n==9) {
+            nameGuessingGame();
+            if(againOrNot()==1) {
+                continue;
+            } else {
+                break;
+            }
+        } else if(n==10) {
+            beautifulYear();
+            if(againOrNot()==1) {
+                continue;
+            } else {
+                break;
+            }
+        } else if(n==11) {
+            calculator();
+            if(againOrNot()==1) {
+                continue;
+            } else {
+                break;
+            }
+        } else if(n==12) {
+            fibonacci();
+            if(againOrNot()==1) {
+                continue;
+            } else {
+                break;
+            }
+        } else {
+            cout << "Does not exist. Enter again:" << endl;
+            continue;
+        }
+    }
+    return 0;
+}
