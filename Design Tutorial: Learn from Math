@@ -1,0 +1,40 @@
+#include <iostream>
+#include <map>
+#include <cmath>
+#include <algorithm>
+#include <iterator>
+#include <list>
+#include <set>
+#include <vector>
+using namespace std;
+
+bool ispr(int a) {
+    for(int i = 2; i<a/2; i++) {
+        if(a%i==0) {
+            return 0;
+        }
+    }
+    return 1;
+}
+
+int main() {
+    
+    int n;
+    cin >> n;
+    if(ispr(n-4)) {
+        if(ispr(n-6)) {
+            if(ispr(n-8)) {
+                cout << 9 << " " << n-9;
+            } else {
+                cout << 8 << " " << n-8;
+            }
+        } else {
+            cout << 6 << " " << n-6;
+        }
+    } else {
+        cout << 4 << " " << n-4;
+    }
+    
+
+    return 0;
+}
