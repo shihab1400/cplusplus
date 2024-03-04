@@ -1,0 +1,59 @@
+#include <iostream>
+#include <iomanip>
+#include <cmath>
+#include <vector>
+#include <list>
+#include <set>
+#include <iterator>
+#include <algorithm>
+using namespace std;
+
+bool yn(int n) {
+    n/=2;
+    if(n%2==0) {
+        return 1;
+    } else {
+        return 0;
+    }
+}
+
+int main() {
+
+    int t;
+    cin >> t;
+    while(t--) {
+        int n, s = 0, x = 0, y = 0, p;
+        cin >> n;
+        vector<int> arr;
+        if(yn(n)) {
+            cout << "YES" << endl;
+            for(int i = 2; i<=n; i+=2) {
+                arr.push_back(i);
+                s++;
+            }
+            for(int i = 0; i<arr.size(); i++) {
+                x+=arr[i];
+            }
+            p = s;
+            s--;
+            int i = 1;
+            while(s--) {
+                arr.push_back(i);
+                i+=2;
+            }
+            for(int i = p; i<arr.size(); i++) {
+                y+=arr[i];
+            }
+            arr.push_back(x-y);
+            for(int i = 0; i<arr.size(); i++) {
+                cout << arr[i] << " ";
+            }
+            cout << endl;
+        } else {
+            cout << "NO" << endl;
+        }
+
+    }
+
+    return 0;
+}
