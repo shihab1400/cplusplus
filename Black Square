@@ -1,0 +1,30 @@
+#include <iostream>
+using namespace std;
+int max(int a, int b) {
+    if(a>b) {
+        return a;
+    } else {
+        return b;
+    }
+}
+int main() {
+    int a, b, c, d, s = 0;
+    cin >> a >> b >> c >> d;
+    string t;
+    cin >> t;
+    for(int i = 0; i<t.size(); i++) {
+        if(t[i]=='1') {
+            s+=a;
+        } else if(t[i]=='2') {
+            s+=b;
+        } else if(t[i]=='3') {
+            s+=c;
+        } else {
+            s+=d;
+        }
+    }
+    cout << s;
+
+
+    return 0;
+}
