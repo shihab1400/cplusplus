@@ -1,0 +1,30 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int t;
+    cin >> t;
+    while(t--) {
+        int arr[3], lg, sm, md;
+        cin >> arr[0];
+        lg = arr[0];
+        sm = arr[0];
+        for(int i = 1; i<3; i++) {
+            cin >> arr[i];
+            if(arr[i]<sm) {
+                sm = arr[i];
+            }
+            if(arr[i]>lg) {
+                lg = arr[i];
+            }
+        }
+        for(int i = 0; i<3; i++) {
+            if(arr[i]!=lg && arr[i]!=sm) {
+                md = arr[i];
+                break;
+            }
+        }
+        cout << md << endl;
+    }
+    return 0;
+}
