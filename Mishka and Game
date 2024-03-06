@@ -1,0 +1,31 @@
+#include <iostream>
+int max(int m, int c) {
+    if(m>c) {
+        return m;
+    } else if(m<c) {
+        return c;
+    } else {
+        return 0;
+    }
+}
+using namespace std;
+int main() {
+  int t, m, c, mm = 0, cc = 0;
+  cin >> t;
+  while(t--) {
+    cin >> m >> c;
+    if(max(m, c)==m) {
+        mm++;
+    } else if(max(m, c)==c) {
+        cc++;
+    }
+  }
+  if(mm>cc) {
+    cout << "Mishka" << endl;
+  } else if(cc>mm) {
+    cout << "Chris" << endl;
+  } else {
+    cout << "Friendship is magic!^^" << endl;
+  }
+  return 0;
+}
