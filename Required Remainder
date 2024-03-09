@@ -1,0 +1,31 @@
+#include <iostream>
+#include <map>
+#include <cmath>
+#include <algorithm>
+#include <iterator>
+#include <list>
+#include <set>
+#include <vector>
+using namespace std;
+
+
+
+int main() {
+
+    int t;
+    cin >> t;
+    while(t--) {
+        int x, y, n;
+        cin >> x >> y >> n;
+        int div = n/x;
+        while(div*x+y>n) {
+            div--;
+        }
+        cout << div*x+y << endl;
+
+    }
+
+
+
+    return 0;
+}
