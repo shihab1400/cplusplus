@@ -1,0 +1,60 @@
+#include <iostream>
+#include <iomanip>
+#include <cmath>
+#include <string>
+#include <vector>
+#include <ios>
+#include <limits>
+#include <array>
+using namespace std;
+
+
+int main() {
+    int n, lyr, a, b;
+    while(true) {
+        cin >> n;
+        if(n%2==0) {
+            lyr = n/2;
+        } else {
+            lyr = n/2 + 1;
+        }
+        a = 0;
+        b = n-1;
+        int arr[n][n];
+        if(n==0) {
+            break;
+        }
+        for(int l = 1; l<=lyr; l++) {
+            for(int i = a; i<=b; i++) {
+                for(int j = a; j<=b; j++) {
+                    arr[i][j] = l;
+                }
+            }
+            a++;
+            b--;
+        }
+        for(int i = 0; i < n; i++) {
+            for(int j = 0; j < n; j++)
+                if(j == 0)
+                    cout << setw(3) << arr[i][j];
+                else
+                    cout << " " << setw(3) << arr[i][j];
+
+            cout << endl;
+        }
+
+        cout << endl;
+    }
+
+
+    return 0;
+}
+
+
+
+
+
+
+
+
+
